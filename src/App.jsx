@@ -1,20 +1,33 @@
-import { useState } from 'react'
+import { useEffect } from 'react';
+
+import * as THREE from 'three';
+
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+import Stats from 'three/examples/jsm/libs/stats.module';
+
+import sceneInit from './lib/SceneInit';
+
 import './App.css'
-import Header from "./components/Header"
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const scene = new sceneInit('myThreeJsCanvas');
+    scene.initialize();
+    scene.animate();
+
+    // adding a box
+    const boxGeometry = new THREE.BoxGeometry(16, 16, 16);
+    const boxMaterial = new THREE.MeshNormalMaterial();
+    const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+    scene.scene.add(boxMesh)
+
+  }, []);
 
   return (
-    <div className="background" >
-    <Header />
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <div>
+        <canvas id="myThreeJsCanvas" />
       </div>
-    </div>
   )
 }
 
