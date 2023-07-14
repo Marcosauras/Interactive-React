@@ -6,9 +6,11 @@ import { TTFLoader } from "three/examples/jsm/loaders/TTFLoader";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
+
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import SceneInit from "./lib/SceneInit";
+import Header from "./components/Header";
 
 function App() {
   useEffect(() => {
@@ -64,6 +66,7 @@ function App() {
 
   return (
     <div>
+    <Header />
       <canvas id="myThreeJsCanvas" />
     </div>
   );
